@@ -1,0 +1,10 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: Lidarr
+# Runs Lidarr
+# ==============================================================================
+
+bashio::log.info 'Starting Lidarr...'
+
+exec /opt/bin/Lidarr -nobrowser -data=/config
