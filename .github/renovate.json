@@ -32,8 +32,7 @@
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "Lidarr/Lidarr",
-      "extractVersionTemplate": "^v(?<version>.*)$",
-      "ignoreUnstable": false
+      "extractVersionTemplate": "^v(?<version>.*)$"
     }
   ],
   "packageRules": [
