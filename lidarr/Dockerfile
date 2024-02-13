@@ -6,7 +6,7 @@ FROM ${BUILD_FROM}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base
-ARG LIDARR_VERSION=2.1.2.3893
+ARG LIDARR_VERSION=2.1.7.4030
 ARG BUILD_ARCH=amd64
 ARG BUILD_VERSION=dev
 ENV XDG_CONFIG_HOME="/config/xdg"
@@ -22,7 +22,7 @@ RUN \
   elif [ "${BUILD_ARCH}" = "armv7" ]; then LIDARR_ARCH="arm"; fi \
   \
   && curl -J -L -o /tmp/lidarr.tar.gz \
-      "https://github.com/Lidarr/Lidarr/releases/download/v${LIDARR_VERSION}/Lidarr.develop.${LIDARR_VERSION}.linux-musl-core-${LIDARR_ARCH}.tar.gz" \
+      "https://github.com/Lidarr/Lidarr/releases/download/v${LIDARR_VERSION}/Lidarr.master.${LIDARR_VERSION}.linux-musl-core-${LIDARR_ARCH}.tar.gz" \
   && mkdir -p /opt/bin \
   && tar zxvf \
       /tmp/lidarr.tar.gz \
