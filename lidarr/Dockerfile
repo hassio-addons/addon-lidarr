@@ -22,7 +22,7 @@ RUN \
   elif [ "${BUILD_ARCH}" = "armv7" ]; then LIDARR_ARCH="arm"; fi \
   \
   && curl -J -L -o /tmp/lidarr.tar.gz \
-      "https://github.com/Lidarr/Lidarr/releases/download/v${LIDARR_VERSION}/Lidarr.develop.${LIDARR_VERSION}.linux-musl-core-${LIDARR_ARCH}.tar.gz" \
+      "https://github.com/Lidarr/Lidarr/releases/download/v${LIDARR_VERSION}/Lidarr.master.${LIDARR_VERSION}.linux-musl-core-${LIDARR_ARCH}.tar.gz" \
   && mkdir -p /opt/bin \
   && tar zxvf \
       /tmp/lidarr.tar.gz \
