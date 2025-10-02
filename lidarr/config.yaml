@@ -1,10 +1,13 @@
 ---
 name: Lidarr
-version: dev
+version: pr-plugins
 slug: lidarr
 description: Looks and smells like Sonarr but made for music
-url: https://github.com/hassio-addons/addon-lidarr/tree/main/README.md
-codenotary: codenotary@frenck.dev
+url: https://github.com/gr1los/addon-lidarr/
+image: ghcr.io/gr1los/addon-lidarr
+logo: https://raw.githubusercontent.com/gr1los/addon-lidarr/main/lidarr/logo.png
+maintainers:
+  - gr1los
 webui: http://[HOST]:[PORT:8686]
 init: false
 arch:

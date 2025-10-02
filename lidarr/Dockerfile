@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:18.1.4
+ARG BUILD_FROM=hotio/lidarr:pr-plugins-2.14.4.4810
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -6,34 +6,17 @@ FROM ${BUILD_FROM}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base
-ARG LIDARR_VERSION=2.13.3.4711
+ARG LIDARR_VERSION=2.14.4.4810
 ARG BUILD_ARCH=amd64
-ARG BUILD_VERSION=dev
+ARG BUILD_VERSION=pr-plugins
 ENV XDG_CONFIG_HOME="/config/xdg"
 # hadolint ignore=DL3003,DL3042
 RUN \
-  apk add --no-cache \
-    icu-libs=76.1-r1 \
-    sqlite-libs=3.49.2-r1 \
-    xmlstarlet=1.6.1-r2 \
+  apt-get update && apt-get install -y \
+    ffmpeg \
   \
-  && if [ "${BUILD_ARCH}" = "aarch64" ]; then LIDARR_ARCH="arm64"; \
-  elif [ "${BUILD_ARCH}" = "amd64" ]; then LIDARR_ARCH="x64"; \
-  elif [ "${BUILD_ARCH}" = "armv7" ]; then LIDARR_ARCH="arm"; fi \
-  \
-  && curl -J -L -o /tmp/lidarr.tar.gz \
-      "https://github.com/Lidarr/Lidarr/releases/download/v${LIDARR_VERSION}/Lidarr.master.${LIDARR_VERSION}.linux-musl-core-${LIDARR_ARCH}.tar.gz" \
-  && mkdir -p /opt/bin \
-  && tar zxvf \
-      /tmp/lidarr.tar.gz \
-      --strip 1 -C /opt/bin \
-  \
-  && echo -e "UpdateMethod=docker\nBranch=master\nPackageVersion=${BUILD_VERSION}\nPackageAuthor=Home Assistant Community Add-ons" \
-    > /opt/package_info \
-  \
-  && rm -f -r \
-    /tmp/* \
-    /opt/bin/Lidarr.Update
+  pip3 install eyed3 youtube-search-python yt-dlp \
+  chmod +x /usr/bin/yt-dlp
 
 # Copy root filesystem
 COPY rootfs /
@@ -52,13 +35,9 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="Franck Nijhof <frenck@addons.community>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
-    org.opencontainers.image.authors="Franck Nijhof <frenck@addons.community>" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.url="https://addons.community" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
