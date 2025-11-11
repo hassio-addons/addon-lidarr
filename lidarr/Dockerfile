@@ -18,8 +18,7 @@ RUN \
     xmlstarlet=1.6.1-r2 \
   \
   && if [ "${BUILD_ARCH}" = "aarch64" ]; then LIDARR_ARCH="arm64"; \
-  elif [ "${BUILD_ARCH}" = "amd64" ]; then LIDARR_ARCH="x64"; \
-  elif [ "${BUILD_ARCH}" = "armv7" ]; then LIDARR_ARCH="arm"; fi \
+  elif [ "${BUILD_ARCH}" = "amd64" ]; then LIDARR_ARCH="x64"; fi \
   \
   && curl -J -L -o /tmp/lidarr.tar.gz \
       "https://github.com/Lidarr/Lidarr/releases/download/v${LIDARR_VERSION}/Lidarr.master.${LIDARR_VERSION}.linux-musl-core-${LIDARR_ARCH}.tar.gz" \
