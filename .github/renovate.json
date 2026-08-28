@@ -52,6 +52,7 @@
       "automerge": true
     },
     {
+      "description": "Packages that live in the Alpine community repository",
       "matchDatasources": ["custom.alpine"],
       "matchPackageNames": ["alpine_3_24/xmlstarlet"],
       "registryUrls": [
