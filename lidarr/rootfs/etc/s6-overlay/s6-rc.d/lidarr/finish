@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: Lidarr
+# Home Assistant Community App: Lidarr
 # Take down the S6 supervision tree when Lidarr fails
 # ==============================================================================
 declare exit_code_container

@@ -3,7 +3,7 @@ name: Lidarr
 version: dev
 slug: lidarr
 description: Looks and smells like Sonarr but made for music
-url: https://github.com/hassio-addons/addon-lidarr/tree/main/README.md
+url: https://github.com/hassio-addons/app-lidarr/tree/main/README.md
 webui: http://[HOST]:[PORT:8686]
 init: false
 arch:
